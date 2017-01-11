@@ -6,4 +6,7 @@ def foo(request):
 
 
 def foo_api(request):
-    return JsonResponse({'foo': 'bar'})
+    if request.method == 'GET':
+        return JsonResponse({'foo': 'bar'})
+    elif request.method == 'POST':
+        return HttpResponse(status=204)
