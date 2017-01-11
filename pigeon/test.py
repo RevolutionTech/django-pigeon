@@ -42,7 +42,7 @@ class RenderTestCaseMixin(object):
 
         # Check that forms submitted did not return errors (or did if it should have)
         form_error_assertion_method = self.assertIn if has_form_error else self.assertNotIn
-        form_error_assertion_method('errorlist', response.content)
+        form_error_assertion_method(b'errorlist', response.content)
 
         return response
 

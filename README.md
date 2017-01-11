@@ -85,10 +85,11 @@ Most of the features in `RenderTestCase` are actually implemented in the mixin c
 from django.test import TransactionTestCase
 from pigeon.test import RenderTestCaseMixin
 
+
 class FooTransactionTestCase(RenderTestCaseMixin, TransactionTestCase):
 
     def testFooView(self):
         ...
 ```
 
-django-pigeon supports Python 2.7 and Django 1.8+.
+django-pigeon supports Python 2.7, 3.4+ and Django 1.8+.

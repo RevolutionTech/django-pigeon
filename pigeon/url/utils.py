@@ -1,5 +1,4 @@
-import urllib
-import urlparse
+from six.moves.urllib import parse
 
 
 def strip_params_from_url(url):
@@ -7,8 +6,8 @@ def strip_params_from_url(url):
 
 
 def add_params_to_url(url, params):
-    url_parts = list(urlparse.urlparse(url))
-    query = dict(urlparse.parse_qsl(url_parts[4]))
+    url_parts = list(parse.urlparse(url))
+    query = dict(parse.parse_qsl(url_parts[4]))
     query.update(params)
-    url_parts[4] = urllib.urlencode(query)
-    return urlparse.urlunparse(url_parts)
+    url_parts[4] = parse.urlencode(query)
+    return parse.urlunparse(url_parts)

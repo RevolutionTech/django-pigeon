@@ -55,6 +55,7 @@ setup(
         'Topic :: Utilities',
     ],
     install_requires=[
+        'six',
         'Django >= 1.8',
     ],
     cmdclass={'test': TestCommand},
