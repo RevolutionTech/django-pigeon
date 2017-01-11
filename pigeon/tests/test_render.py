@@ -9,3 +9,6 @@ class RenderFooTestCase(RenderTestCase):
 
     def testFooAPIView(self):
         self.assertAPIResponseRenders('/api/foo/')
+
+    def testBarRedirectsToFoo(self):
+        self.assertResponseRedirects('/bar/', '/foo/')
