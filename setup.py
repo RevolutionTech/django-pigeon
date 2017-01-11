@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+from setuptools import setup, Command
+
+
+class TestCommand(Command):
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        import django
+        from django.conf import settings
+        from django.core.management import call_command
+
+        settings.configure(
+            DATABASES={
+                'default': {
+                    'NAME': ':memory:',
+                    'ENGINE': 'django.db.backends.sqlite3',
+                }
+            },
+            INSTALLED_APPS=('pigeon',),
+            ROOT_URLCONF='pigeon.tests.urls'
+        )
+        django.setup()
+        call_command('test', 'pigeon')
+
+
+setup(
+    name='django-pigeon',
+    version='0.1.0',
+    packages=['pigeon'],
+    license='ISC License',
+    description='A Django app that allows creation of conditional logic in admin.',
+    url='https://github.com/RevolutionTech/django-pigeon/',
+    author='Lucas Connors',
+    author_email='lucas@revolutiontech.ca',
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved',
+        'License :: OSI Approved :: ISC License (ISCL)',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Testing',
+        'Topic :: Utilities',
+    ],
+    install_requires=[
+        'Django >= 1.9',
+    ],
+    cmdclass={'test': TestCommand},
+)
