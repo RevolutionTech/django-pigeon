@@ -5,17 +5,21 @@ from django.test import TestCase, TransactionTestCase
 from pigeon.url.utils import strip_params_from_url, add_params_to_url
 
 
-class RenderTestCaseMixin(object):
+class RenderTestCaseMeta(type):
 
-    @classmethod
-    def setUpClass(cls):
+    def __new__(cls, name, bases, dct):
         def testRender200s(self):
             for url in self.get200s():
                 self.assertResponseRenders(url)
 
-        if hasattr(cls, 'get200s'):
-            cls.testRender200s = testRender200s
-        super(RenderTestCaseMixin, cls).setUpClass()
+        if 'get200s' in dct:
+            dct['testRender200s'] = testRender200s
+        return type.__new__(cls, name, bases, dct)
+
+
+class RenderTestCaseMixin(object):
+
+    __metaclass__ = RenderTestCaseMeta
 
     def assertResponseRenders(self, url, status_code=200, method='GET', data={}, has_form_error=False, **kwargs):
         request_method = getattr(self.client, method.lower())
