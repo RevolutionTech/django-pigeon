@@ -8,69 +8,87 @@
 
 django-pigeon comes equipped with a `RenderTestCase` which provides an assortment of methods on top of Django's `TestCase` that assist with end-to-end testing of views in Django. Writing a test that verifies a view renders correctly is as simple as:
 
-    from pigeon.test import RenderTestCase
+```
+from pigeon.test import RenderTestCase
 
 
-    class FooTestCase(RenderTestCase):
+class FooTestCase(RenderTestCase):
 
-        def testFooView(self):
-            self.assertResponseRenders('/foo/')
+    def testFooView(self):
+        self.assertResponseRenders('/foo/')
+```
 
 You can also inspect the rendered response:
 
-    def testFooView(self):
-        response = self.assertResponseRenders('/foo/')
-        self.assertIn('FOO', response.content)
+```
+def testFooView(self):
+    response = self.assertResponseRenders('/foo/')
+    self.assertIn('FOO', response.content)
+```
 
 By default, `assertResponseRenders` verifies that the status code of the response is 200, but you can change this by specifying the `status_code` keyword argument:
 
-    def testBarView404(self):
-        self.assertResponseRenders('/bar/', status_code=404)
+```
+def testBarView404(self):
+    self.assertResponseRenders('/bar/', status_code=404)
+```
 
 You can also make POST and PUT requests using `assertResponseRenders` by providing the `method` and `data` keywords arguments:
 
-    def testCreateFooView(self):
-        payload = {'text': 'Hello World!'}
-        self.assertResponseRenders('/foo/create/', status_code=201, method='POST', data=payload)
+```
+def testCreateFooView(self):
+    payload = {'text': 'Hello World!'}
+    self.assertResponseRenders('/foo/create/', status_code=201, method='POST', data=payload)
+```
 
 If you are using HTML generated from Django forms, you can set `has_form_error=True` as a shortcut to check for `errorlist` in the resulting HTML:
 
-    def testCreateFooViewWithoutText(self):
-        response = self.assertResponseRenders('/foo/create/', method='POST', has_form_error=True)
-        self.assertIn('This field is required.', response.content)
+```
+def testCreateFooViewWithoutText(self):
+    response = self.assertResponseRenders('/foo/create/', method='POST', has_form_error=True)
+    self.assertIn('This field is required.', response.content)
+```
 
 Use `assertAPIResponseRenders` for JSON responses. `json.loads` is automatically called on the response, so the object returned is ready for inspection:
 
-    def testFooAPIView(self):
-        payload = {'text': 'Hello!'}
-        response = self.assertAPIResponseRenders('/foo/', method='POST', data=payload)
-        self.assertEquals(response['text'], 'Hello!')
+```
+def testFooAPIView(self):
+    payload = {'text': 'Hello!'}
+    response = self.assertAPIResponseRenders('/foo/', method='POST', data=payload)
+    self.assertEquals(response['text'], 'Hello!')
+```
 
 You can use `assertResponseRedirects` to test redirects:
 
-    def testFooRedirects(self):
-        # /foo/ redirects to /bar/
-        self.assertResponseRedirects('/foo/', '/bar/')
+```
+def testFooRedirects(self):
+    # /foo/ redirects to /bar/
+    self.assertResponseRedirects('/foo/', '/bar/')
+```
 
 If you have a list of views that you want to verify are rendering as 200 without adding any special assertion logic, you can simply override the `get200s` method, which should return a list of URLs. django-pigeon will construct a test that checks that rendering all of these URLs results in a 200:
 
-    class FooTestCase(RenderTestCase):
+```
+class FooTestCase(RenderTestCase):
 
-        def get200s(self):
-            return [
-                '/foo/',
-                '/bar/',
-                '/foobar/',
-            ]
+    def get200s(self):
+        return [
+            '/foo/',
+            '/bar/',
+            '/foobar/',
+        ]
+```
 
 Most of the features in `RenderTestCase` are actually implemented in the mixin class `RenderTestCaseMixin`. You can combine `RenderTestCaseMixin` with other TestCase classes to get additional functionality:
 
-    from django.test import TransactionTestCase
-    from pigeon.test import RenderTestCaseMixin
+```
+from django.test import TransactionTestCase
+from pigeon.test import RenderTestCaseMixin
 
-    class FooTransactionTestCase(RenderTestCaseMixin, TransactionTestCase):
+class FooTransactionTestCase(RenderTestCaseMixin, TransactionTestCase):
 
-        def testFooView(self):
-            ...
+    def testFooView(self):
+        ...
+```
 
 django-pigeon supports Python 2.7 and Django 1.9+.
