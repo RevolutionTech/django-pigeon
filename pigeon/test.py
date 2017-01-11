@@ -63,12 +63,13 @@ class RenderTestCaseMixin(object):
             205,  # Reset Content
         ]:
             return response
-        return response.json()
+        return json.loads(response.content.decode())
 
     def assertResponseRedirects(self, url, redirect_url, status_code=200, method='GET', data={}, **kwargs):
         response = self.assertResponseRenders(url, status_code=302, method=method, data=data, **kwargs)
         redirect_url_from_response, _ = response.redirect_chain[0]
-        self.assertEquals(strip_params_from_url(redirect_url_from_response), redirect_url)
+        relative_url_from_response = strip_params_from_url(redirect_url_from_response).replace('http://testserver', '')
+        self.assertEquals(relative_url_from_response, redirect_url)
         self.assertEquals(response.status_code, status_code)
 
 

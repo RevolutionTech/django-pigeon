@@ -42,6 +42,7 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
+        'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
         'Intended Audience :: Developers',
@@ -54,7 +55,7 @@ setup(
         'Topic :: Utilities',
     ],
     install_requires=[
-        'Django >= 1.9',
+        'Django >= 1.8',
     ],
     cmdclass={'test': TestCommand},
 )
