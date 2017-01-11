@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2017-01-11
+### Changed
+- FIX: Add `url` and `tests` packages to setup.py
+
 ## [0.1.0] - 2017-01-11
 ### Added
 - Initial test utilities including `RenderTestCaseMixin`, `RenderTestCase`, and `RenderTransactionTestCase`

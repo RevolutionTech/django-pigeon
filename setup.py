@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from setuptools import setup, Command
+from setuptools import setup, find_packages, Command
 
 
 class TestCommand(Command):
@@ -32,8 +32,8 @@ class TestCommand(Command):
 
 setup(
     name='django-pigeon',
-    version='0.1.0',
-    packages=['pigeon'],
+    version='0.1.1',
+    packages=find_packages(),
     license='ISC License',
     description='Test utilities for Django projects.',
     url='https://github.com/RevolutionTech/django-pigeon/',
