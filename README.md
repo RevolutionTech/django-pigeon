@@ -2,6 +2,7 @@
 #### Test utilities for Django projects
 
 [![Build Status](https://travis-ci.org/RevolutionTech/django-pigeon.svg?branch=master)](https://travis-ci.org/RevolutionTech/django-pigeon)
+[![codecov](https://codecov.io/gh/RevolutionTech/django-pigeon/branch/master/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/django-pigeon)
 
 ## Usage
 
