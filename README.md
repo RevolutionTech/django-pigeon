@@ -4,6 +4,12 @@
 [![Build Status](https://travis-ci.org/RevolutionTech/django-pigeon.svg?branch=master)](https://travis-ci.org/RevolutionTech/django-pigeon)
 [![codecov](https://codecov.io/gh/RevolutionTech/django-pigeon/branch/master/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/django-pigeon)
 
+## Installation
+
+```
+$ pip install django-pigeon
+```
+
 ## Usage
 
 django-pigeon comes equipped with a `RenderTestCase` which provides an assortment of methods on top of Django's `TestCase` that assist with end-to-end testing of views in Django. Writing a test that verifies a view renders correctly is as simple as:
