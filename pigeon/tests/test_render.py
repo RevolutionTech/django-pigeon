@@ -8,12 +8,14 @@ class RenderFooTestCase(RenderTestCase):
             '/foo/',
         ]
 
+    def getAPI200s(self):
+        return [
+            '/api/foo/',
+        ]
+
     def testFooViewReturnsHelloWorld(self):
         response = self.assertResponseRenders('/foo/')
         self.assertIn(b'Hello World!', response.content)
-
-    def testFooAPIView(self):
-        self.assertAPIResponseRenders('/api/foo/')
 
     def testPostFooAPIViewReturns204(self):
         self.assertAPIResponseRenders('/api/foo/', status_code=204, method='POST', data={'text': 'Hello World!'})

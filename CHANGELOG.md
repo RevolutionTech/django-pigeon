@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Add `testRenderAPI200s()` test method which gets created when `getAPI200s()` is defined
 
 ## [0.1.1] - 2017-01-11
 ### Changed

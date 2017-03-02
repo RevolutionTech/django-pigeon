@@ -72,7 +72,7 @@ def testFooRedirects(self):
     self.assertResponseRedirects('/foo/', '/bar/')
 ```
 
-If you have a list of views that you want to verify are rendering as 200 without adding any special assertion logic, you can simply override the `get200s` method, which should return a list of URLs. django-pigeon will construct a test that checks that rendering all of these URLs results in a 200:
+If you have a list of views that you want to verify are rendering as 200 without adding any special assertion logic, you can simply override the `get200s` and `getAPI200s` methods, which should return a list of URLs. django-pigeon will construct test methods that check that rendering all of these URLs results in a 200:
 
 ```python
 class FooTestCase(RenderTestCase):
@@ -82,6 +82,11 @@ class FooTestCase(RenderTestCase):
             '/foo/',
             '/bar/',
             '/foobar/',
+        ]
+
+    def getAPI200s(self):
+        return [
+            '/api/foo/',
         ]
 ```
 

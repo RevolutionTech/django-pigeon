@@ -12,8 +12,14 @@ class RenderTestCaseMeta(type):
             for url in self.get200s():
                 self.assertResponseRenders(url)
 
+        def testRenderAPI200s(self):
+            for url in self.getAPI200s():
+                self.assertAPIResponseRenders(url)
+
         if 'get200s' in dct:
             dct['testRender200s'] = testRender200s
+        if 'getAPI200s' in dct:
+            dct['testRenderAPI200s'] = testRenderAPI200s
         return type.__new__(cls, name, bases, dct)
 
 
