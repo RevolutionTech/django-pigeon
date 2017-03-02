@@ -5,8 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.2.0] - 2017-03-02
 ### Added
 - Add `testRenderAPI200s()` test method which gets created when `getAPI200s()` is defined
+### Changed
+- FIX: Use `None` as default instead of `{}` to prevent memory reuse issues
 
 ## [0.1.1] - 2017-01-11
 ### Changed

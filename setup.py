@@ -32,7 +32,7 @@ class TestCommand(Command):
 
 setup(
     name='django-pigeon',
-    version='0.1.1',
+    version='0.2.0',
     packages=find_packages(),
     license='ISC License',
     description='Test utilities for Django projects.',

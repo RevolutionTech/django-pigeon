@@ -27,7 +27,8 @@ class RenderTestCaseMixin(object):
 
     __metaclass__ = RenderTestCaseMeta
 
-    def assertResponseRenders(self, url, status_code=200, method='GET', data={}, has_form_error=False, **kwargs):
+    def assertResponseRenders(self, url, status_code=200, method='GET', data=None, has_form_error=False, **kwargs):
+        data = data or {}
         request_method = getattr(self.client, method.lower())
         follow = status_code == 302
         response = request_method(url, data=data, follow=follow, **kwargs)
@@ -52,7 +53,7 @@ class RenderTestCaseMixin(object):
 
         return response
 
-    def assertAPIResponseRenders(self, url, status_code=200, method='GET', data={}, **kwargs):
+    def assertAPIResponseRenders(self, url, status_code=200, method='GET', data=None, **kwargs):
         api_url = add_params_to_url(url, {'format': 'json'})
         if data:
             data = json.dumps(data)
@@ -71,7 +72,7 @@ class RenderTestCaseMixin(object):
             return response
         return json.loads(response.content.decode())
 
-    def assertResponseRedirects(self, url, redirect_url, status_code=200, method='GET', data={}, **kwargs):
+    def assertResponseRedirects(self, url, redirect_url, status_code=200, method='GET', data=None, **kwargs):
         response = self.assertResponseRenders(url, status_code=302, method=method, data=data, **kwargs)
         redirect_url_from_response, _ = response.redirect_chain[0]
         relative_url_from_response = strip_params_from_url(redirect_url_from_response).replace('http://testserver', '')
