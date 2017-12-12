@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### Added
-- Django 1.11 support
+- Django 1.11-2.0 support
 - Python 3.6 support
 
 ## [0.2.0] - 2017-03-02
