@@ -1,6 +1,7 @@
 import json
 
 from django.test import TestCase, TransactionTestCase
+from six import add_metaclass
 
 from pigeon.url.utils import strip_params_from_url, add_params_to_url
 
@@ -23,9 +24,8 @@ class RenderTestCaseMeta(type):
         return type.__new__(cls, name, bases, dct)
 
 
+@add_metaclass(RenderTestCaseMeta)
 class RenderTestCaseMixin(object):
-
-    __metaclass__ = RenderTestCaseMeta
 
     def assertResponseRenders(self, url, status_code=200, method='GET', data=None, has_form_error=False, **kwargs):
         data = data or {}

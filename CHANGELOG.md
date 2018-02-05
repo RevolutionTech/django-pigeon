@@ -6,9 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2018-02-04
+
 ### Added
 - Django 1.11-2.0 support
 - Python 3.6 support
+
+### Changed
+- FIX: Use `@add_metaclass()` decorator from `six` so that `testRender200s()` and `testRenderAPI200s()` are generated in Python 3
 
 ## [0.2.0] - 2017-03-02
 
