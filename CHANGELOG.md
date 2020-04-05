@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Django 2.1-3.0 support
+
 ## [0.3.0] - 2018-02-04
 
 ### Added
