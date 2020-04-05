@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Django 2.2-3.0 support
+- Python 3.7-3.8 support
 
 ### Removed
 - Django 1.8-2.0 support
