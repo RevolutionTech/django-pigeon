@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from pigeon.test import RenderTestCase
 
 
@@ -18,7 +20,12 @@ class RenderFooTestCase(RenderTestCase):
         self.assertIn(b'Hello World!', response.content)
 
     def testPostFooAPIViewReturns204(self):
-        self.assertAPIResponseRenders('/api/foo/', status_code=204, method='POST', data={'text': 'Hello World!'})
+        self.assertAPIResponseRenders(
+            '/api/foo/',
+            status_code=HTTPStatus.NO_CONTENT,
+            method='POST',
+            data={'text': 'Hello World!'}
+        )
 
     def testBarRedirectsToFoo(self):
         self.assertResponseRedirects('/bar/', '/foo/')

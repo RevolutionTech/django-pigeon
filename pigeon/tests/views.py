@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from django.http import HttpResponse, JsonResponse
 
 
@@ -9,4 +11,4 @@ def foo_api(request):
     if request.method == 'GET':
         return JsonResponse({'foo': 'bar'})
     elif request.method == 'POST':
-        return HttpResponse(status=204)
+        return HttpResponse(status=HTTPStatus.NO_CONTENT)
