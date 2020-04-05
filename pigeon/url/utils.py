@@ -1,4 +1,4 @@
-from six.moves.urllib import parse
+from urllib import parse
 
 
 def strip_params_from_url(url):

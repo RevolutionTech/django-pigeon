@@ -1,7 +1,7 @@
 import json
+from http import HTTPStatus
 
 from django.test import TestCase, TransactionTestCase
-from six import add_metaclass
 
 from pigeon.url.utils import strip_params_from_url, add_params_to_url
 
@@ -24,16 +24,23 @@ class RenderTestCaseMeta(type):
         return type.__new__(cls, name, bases, dct)
 
 
-@add_metaclass(RenderTestCaseMeta)
-class RenderTestCaseMixin(object):
+class RenderTestCaseMixin(metaclass=RenderTestCaseMeta):
 
-    def assertResponseRenders(self, url, status_code=200, method='GET', data=None, has_form_error=False, **kwargs):
+    def assertResponseRenders(
+        self,
+        url,
+        status_code=HTTPStatus.OK,
+        method='GET',
+        data=None,
+        has_form_error=False,
+        **kwargs
+    ):
         data = data or {}
         request_method = getattr(self.client, method.lower())
-        follow = status_code == 302
+        follow = status_code == HTTPStatus.FOUND
         response = request_method(url, data=data, follow=follow, **kwargs)
 
-        if status_code == 302:
+        if status_code == HTTPStatus.FOUND:
             redirect_url, response_status_code = response.redirect_chain[0]
         else:
             response_status_code = response.status_code
@@ -53,7 +60,7 @@ class RenderTestCaseMixin(object):
 
         return response
 
-    def assertAPIResponseRenders(self, url, status_code=200, method='GET', data=None, **kwargs):
+    def assertAPIResponseRenders(self, url, status_code=HTTPStatus.OK, method='GET', data=None, **kwargs):
         api_url = add_params_to_url(url, {'format': 'json'})
         if data:
             data = json.dumps(data)
@@ -66,14 +73,14 @@ class RenderTestCaseMixin(object):
             **kwargs
         )
         if status_code in [
-            204,  # No Content
-            205,  # Reset Content
+            HTTPStatus.NO_CONTENT,
+            HTTPStatus.RESET_CONTENT,
         ]:
             return response
         return json.loads(response.content.decode())
 
-    def assertResponseRedirects(self, url, redirect_url, status_code=200, method='GET', data=None, **kwargs):
-        response = self.assertResponseRenders(url, status_code=302, method=method, data=data, **kwargs)
+    def assertResponseRedirects(self, url, redirect_url, status_code=HTTPStatus.OK, method='GET', data=None, **kwargs):
+        response = self.assertResponseRenders(url, status_code=HTTPStatus.FOUND, method=method, data=data, **kwargs)
         redirect_url_from_response, _ = response.redirect_chain[0]
         relative_url_from_response = strip_params_from_url(redirect_url_from_response).replace('http://testserver', '')
         self.assertEquals(relative_url_from_response, redirect_url)

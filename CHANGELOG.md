@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Django 2.2-3.0 support
+- Python 3.7-3.8 support
+
+### Removed
+- Django 1.8-2.0 support
+- Python 2.7, 3.4 support
+
 ## [0.3.0] - 2018-02-04
 
 ### Added
