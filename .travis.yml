@@ -14,7 +14,7 @@ env:
 install:
   - pip install -q coverage Django==$DJANGO_VERSION
 
-script: coverage run --source=. ./setup.py test
+script: coverage run --source=. ./runtests.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

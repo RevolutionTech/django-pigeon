@@ -1,33 +1,5 @@
 #!/usr/bin/env python
-from setuptools import setup, find_packages, Command
-
-
-class TestCommand(Command):
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        import django
-        from django.conf import settings
-        from django.core.management import call_command
-
-        settings.configure(
-            DATABASES={
-                'default': {
-                    'NAME': ':memory:',
-                    'ENGINE': 'django.db.backends.sqlite3',
-                }
-            },
-            INSTALLED_APPS=('pigeon',),
-            ROOT_URLCONF='tests.urls'
-        )
-        django.setup()
-        call_command('test')
+from setuptools import setup, find_packages
 
 
 setup(
@@ -60,5 +32,4 @@ setup(
     install_requires=[
         'Django >= 2.2',
     ],
-    cmdclass={'test': TestCommand},
 )
