@@ -6,11 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-02-02
+
 ### Added
 - Django 2.2-3.1 support
 - Python 3.7-3.8 support
 
 ### Changed
+- Run autoformatters provided by opstrich including pyupgrade, isort, and black
 - Publish package to PyPi using opstrich task
 
 ### Removed
