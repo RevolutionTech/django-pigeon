@@ -3,7 +3,7 @@ from http import HTTPStatus
 
 from django.test import TestCase, TransactionTestCase
 
-from pigeon.url.utils import strip_params_from_url, add_params_to_url
+from pigeon.url.utils import add_params_to_url, strip_params_from_url
 
 
 class RenderTestCaseMeta(type):
