@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 - Django 1.8-2.0 support
-- Python 2.7, 3.4 support
+- Python 2.7, 3.4-3.5 support
 
 ## [0.3.0] - 2018-02-04
 
