@@ -24,10 +24,10 @@ class TestCommand(Command):
                 }
             },
             INSTALLED_APPS=('pigeon',),
-            ROOT_URLCONF='pigeon.tests.urls'
+            ROOT_URLCONF='tests.urls'
         )
         django.setup()
-        call_command('test', 'pigeon')
+        call_command('test')
 
 
 setup(

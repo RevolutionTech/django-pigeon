@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.views.generic.base import RedirectView
 
-from pigeon.tests.views import foo, foo_api
+from tests.views import foo, foo_api
 
 
 urlpatterns = [
