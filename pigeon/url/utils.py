@@ -2,7 +2,7 @@ from urllib import parse
 
 
 def strip_params_from_url(url):
-    return url.split('?')[0]
+    return url.split("?")[0]
 
 
 def add_params_to_url(url, params):
