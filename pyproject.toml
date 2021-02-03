@@ -4,6 +4,9 @@ version = "0.3.0"
 description = "Test utilities for Django projects."
 authors = ["Lucas Connors <lucas@revolutiontech.ca>"]
 license = "ISC"
+packages = [
+    { include = "pigeon" },
+]
 readme = "README.md"
 repository = "https://github.com/RevolutionTech/django-pigeon"
 classifiers = [
