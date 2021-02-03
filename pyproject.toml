@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-pigeon"
-version = "0.3.0"
+version = "0.4.0"
 description = "Test utilities for Django projects."
 authors = ["Lucas Connors <lucas@revolutiontech.ca>"]
 license = "ISC"
