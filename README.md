@@ -104,4 +104,4 @@ class FooTransactionTestCase(RenderTestCaseMixin, TransactionTestCase):
         ...
 ```
 
-django-pigeon supports Python 3.5+ and Django 2.2+.
+django-pigeon supports Python 3.6+ and Django 2.2+.
