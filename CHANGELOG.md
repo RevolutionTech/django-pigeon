@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Switched CI from Travis to Github Actions
+
 ## [0.4.0] - 2021-02-03
 
 ### Added

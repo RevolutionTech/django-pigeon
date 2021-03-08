@@ -1,7 +1,7 @@
 # django-pigeon
 #### Test utilities for Django projects
 
-[![Build Status](https://travis-ci.org/RevolutionTech/django-pigeon.svg?branch=master)](https://travis-ci.org/RevolutionTech/django-pigeon)
+![CI](https://github.com/RevolutionTech/django-pigeon/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/RevolutionTech/django-pigeon/branch/master/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/django-pigeon)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c1add1fd523c4bb48a6e5158cdffa1dd)](https://www.codacy.com/app/RevolutionTech/django-pigeon)
 
