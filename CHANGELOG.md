@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Switched CI from Travis to Github Actions
+- Renamed default from `master` -> `main`
 
 ## [0.4.0] - 2021-02-03
 
