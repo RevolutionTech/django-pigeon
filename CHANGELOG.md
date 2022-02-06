@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switched CI from Travis to Github Actions
 - Renamed default from `master` -> `main`
 
+### Removed
+- Python 3.6 support
+
 ## [0.4.0] - 2021-02-03
 
 ### Added
