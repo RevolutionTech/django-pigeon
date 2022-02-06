@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 from django.views.generic.base import RedirectView
 
 from tests.views import foo, foo_api
 
 urlpatterns = [
-    url(r"^api/foo/$", foo_api),
-    url(r"^foo/$", foo),
-    url(r"^bar/$", RedirectView.as_view(url="/foo/", permanent=False)),
+    path("api/foo/", foo_api),
+    path("foo/", foo),
+    path("bar/", RedirectView.as_view(url="/foo/", permanent=False)),
 ]
