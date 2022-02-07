@@ -6,9 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Django 3.2-4.0 support
+- Python 3.9-3.10 support
+
 ### Changed
 - Switched CI from Travis to Github Actions
 - Renamed default from `master` -> `main`
+
+### Removed
+- Python 3.6 support
 
 ## [0.4.0] - 2021-02-03
 
